@@ -12,7 +12,11 @@ const ProfessionalItem: React.FC<ProfessionalExperience> = (props) => {
     title,
     previousTitles
   } = props;
-  const previousTitlesSorted = previousTitles?.sort((a, b) => b.startDate - a.startDate) || [];
+  const previousTitlesSorted = previousTitles?.sort((a, b) => {
+    const aOrderNumber = parseInt(a.startDate.replace(/^\D+/g, ''));
+    const bOrderNumber = parseInt(b.startDate.replace(/^\D+/g, ''));
+    return bOrderNumber - aOrderNumber
+  })
   return (
     <article className="border-t-2 border-neutral-6 py-6 first-of-type:border-none last-of-type:pb-0">
       <Heading className="text-balance" level={3}>
