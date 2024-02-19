@@ -23,7 +23,12 @@ const Skills: React.FC = () => {
 
         {allSkills.sort((a, b) => a.order - b.order).map((skill: Skill, skillIndex) => {
             return (
-              <SkillListItem key={skillIndex} skillItem={...skill} />
+              <SkillListItem key={skillIndex} skillItem={{
+                _id: skill._id,
+                title: skill.title,
+                icon: skill.icon,
+                body: skill.body
+              }} />
             )
           })}
       </div>
