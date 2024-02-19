@@ -1,14 +1,15 @@
 import { Achievement } from '@content';
-import { faUniversity } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Heading } from '../Heading/Heading';
 import Prose from '../Prose/Prose';
+import DynamicIcon from 'src/helpers/icons';
 
 const AchievementItem: React.FC<Achievement> = ({
   achievement,
   body,
   organization,
+  completionYear,
+  icon,
 }) => {
   return (
     <article className="border-t-2 border-neutral-6 py-6 first-of-type:border-none last-of-type:pb-0">
@@ -17,8 +18,8 @@ const AchievementItem: React.FC<Achievement> = ({
       </Heading>
 
       <div className="mt-1 font-medium tracking-wide">
-        <FontAwesomeIcon className="mr-2" icon={faUniversity} />
-        {organization}
+        {icon && <DynamicIcon className='mr-2' iconSelected={icon} />}
+        {organization}, {completionYear}
       </div>
 
       <Prose html={body.html} />

@@ -1,17 +1,18 @@
-import { ProfessionalExperience } from '@content';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ProfessionalExperience, PreviousTitle } from '@content';
 import React from 'react';
 import { Heading } from '../Heading/Heading';
 import Prose from '../Prose/Prose';
 
-const ProfessionalItem: React.FC<ProfessionalExperience> = ({
-  body,
-  endDate,
-  organization,
-  startDate,
-  title,
-}) => {
+const ProfessionalItem: React.FC<ProfessionalExperience> = (props) => {
+  const {
+    body,
+    endDate,
+    organization,
+    startDate,
+    title,
+    previousTitles
+  } = props;
+  const previousTitlesSorted = previousTitles?.sort((a, b) => b.startDate - a.startDate) || [];
   return (
     <article className="border-t-2 border-neutral-6 py-6 first-of-type:border-none last-of-type:pb-0">
       <Heading className="text-balance" level={3}>
@@ -22,10 +23,16 @@ const ProfessionalItem: React.FC<ProfessionalExperience> = ({
       </Heading>
 
       <div className="mt-1 font-medium tracking-wide">
-        <FontAwesomeIcon className="mr-2" icon={faCalendar} />
         {startDate}–{!endDate ? 'Current' : endDate}
       </div>
-
+      {previousTitlesSorted?.map((prevTitle: PreviousTitle, idx) => (
+        <div className="mt-1" key={idx}>
+          <Heading level={6} className="text-neutral-11 font-medium tracking-wide">
+            {prevTitle.title} {prevTitle.startDate}–{prevTitle.endDate}
+          </Heading>
+        </div>
+  
+      ))}
       <Prose html={body.html} />
     </article>
   );
