@@ -1,4 +1,5 @@
 import {
+  PreviousTitle,
   allAchievements,
   allProfessionalExperiences,
   personal,
@@ -19,3 +20,13 @@ export const sortedAchievements = allAchievements.sort((a, b) => {
   const bOrderNumber = parseInt(b._raw.sourceFileName.replace(/^\D+/g, ''));
   return aOrderNumber - bOrderNumber;
 });
+
+export const sortedPreviousTitles = (titles: PreviousTitle[]) => titles?.sort((a, b) => {
+  const aOrderNumber = parseInt(a.startDate.replace(/^\D+/g, ''));
+  const bOrderNumber = parseInt(b.startDate.replace(/^\D+/g, ''));
+  return bOrderNumber - aOrderNumber
+})
+
+export const classNames = (...classes: string[]) => {
+  return classes.filter(Boolean).join(' ');
+}

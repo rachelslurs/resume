@@ -8,12 +8,10 @@ export const AdditionalInfo: React.FC = () => {
     <article className="py-12">
       <div className="mb-6 flex justify-center">
         <SectionHeading
-          icon='faPaintBrush'
           level={2}
           text={additionalInfo.title}
         />
       </div>
-
       <Prose html={additionalInfo.body.html} />
     </article>
   );

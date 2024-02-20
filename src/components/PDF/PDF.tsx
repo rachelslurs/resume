@@ -18,6 +18,7 @@ import { getAccentColor, getNeutralColor } from '../../helpers/colors';
 import {
   fullName,
   sortedAchievements,
+  sortedPreviousTitles,
   sortedProfessionalExperiences,
 } from '../../helpers/utils';
 import { BuildingColumns } from './Icons/BuildingColumns';
@@ -28,7 +29,6 @@ import { CircleGraduationCap } from './Icons/CircleGraduationCap';
 import { CircleIdCard } from './Icons/CircleIdCard';
 import { CirclePaintbrush } from './Icons/CirclePaintbrush';
 import { CircleUser } from './Icons/CircleUser';
-import { Star } from './Icons/Star';
 import { htmlRenderers } from './htmlRenderers';
 
 const theme = resumeConfig.pdfTheme;
@@ -290,21 +290,17 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <CircleCheck size={fontSizes.m} />
                 <Text>Skills &amp; Expertise</Text>
               </View>
-              {allSkills.map((skill, skillIndex) => (
-                <View key={skill._id}>
-                  <View style={styles.itemHeading}>
-                    <View style={styles.sectionHeadingStars}>
-                      {Array.from(Array(allSkills.length - skillIndex)).map(
-                        (star, starIndex) => (
-                          <Star key={starIndex} size={fontSizes.xxs} />
-                        ),
-                      )}
+              {allSkills.sort((a, b) => a.order - b.order).map((skill, skillIndex) => {
+                console.log('skill.icon', skill.icon)
+                return (
+                  <View key={skill._id}>
+                    <View style={styles.itemHeading}>
+                      <Text style={styles.bold}>{skill.title}</Text>
                     </View>
-                    <Text style={styles.bold}>{skill.title}</Text>
+                    <Html {...htmlProps}>{skill.body.html}</Html>
                   </View>
-                  <Html {...htmlProps}>{skill.body.html}</Html>
-                </View>
-              ))}
+                )
+              })}
             </View>
           </View>
         </View>
@@ -312,28 +308,39 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
           <View style={styles.section}>
             <View style={styles.sectionHeading}>
               <CircleBriefcase size={fontSizes.m} />
-              <Text>Professional Experience</Text>
+              <Text>Experience</Text>
             </View>
-            {sortedProfessionalExperiences.map((professionalExperience) => (
-              <View key={professionalExperience._id}>
-                <View style={styles.itemHeading}>
-                  <Text style={styles.professionalTitle}>
-                    {professionalExperience.title}
-                  </Text>
-                  <Text>&nbsp;at {professionalExperience.organization}</Text>
+            {sortedProfessionalExperiences.map((professionalExperience) => {
+              const previousTitlesSorted = professionalExperience.previousTitles ? sortedPreviousTitles(professionalExperience.previousTitles) : []
+              return (
+                <View key={professionalExperience._id}>
+                  <View style={styles.itemHeading}>
+                    <Text style={styles.professionalTitle}>
+                      {professionalExperience.title}
+                    </Text>
+                    <Text>&nbsp;at {professionalExperience.organization}</Text>
+
+                  </View>
+                  <View style={styles.itemSubheadingRow}>
+                    <Text style={styles.itemSubheading}>
+                      {professionalExperience.startDate}—
+                      {professionalExperience.endDate
+                        ? professionalExperience.endDate
+                        : 'Current'}
+                    </Text>
+                    </View>
+                  
+                    {previousTitlesSorted?.map((prevTitle: any, idx) => (
+                      <View key={idx} style={styles.itemSubheadingRow}>
+                        <Text style={styles.itemSubheading}>
+                          {prevTitle.title} {prevTitle.startDate}—{prevTitle.endDate}
+                        </Text>
+                      </View>
+                    ))}
+                  <Html {...htmlProps}>{professionalExperience.body.html}</Html>
                 </View>
-                <View style={styles.itemSubheadingRow}>
-                  <Calendar size={fontSizes.xxs} />
-                  <Text style={styles.itemSubheading}>
-                    {professionalExperience.startDate}—
-                    {professionalExperience.endDate
-                      ? professionalExperience.endDate
-                      : 'Current'}
-                  </Text>
-                </View>
-                <Html {...htmlProps}>{professionalExperience.body.html}</Html>
-              </View>
-            ))}
+              )
+                      })}
           </View>
           <View style={styles.section}>
             <View style={styles.sectionHeading}>
@@ -348,7 +355,7 @@ const PDF: React.FC<PDFProps> = ({ privateInformation }) => {
                 <View style={styles.itemSubheadingRow}>
                   <BuildingColumns size={fontSizes.xxs} />
                   <Text style={styles.itemSubheading}>
-                    {achievement.organization}
+                    {achievement.organization}, {achievement.completionYear}
                   </Text>
                 </View>
                 <Html {...htmlProps}>{achievement.body.html}</Html>
