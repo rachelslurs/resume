@@ -1,7 +1,7 @@
-import * as colors from '@radix-ui/colors';
 import { Metadata, Viewport } from 'next';
-import { Albert_Sans, JetBrains_Mono } from 'next/font/google';
+import { Karla, Lora, JetBrains_Mono } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+import * as colors from '@radix-ui/colors';
 import resumeConfig from '../../edit-me/config/resumeConfig';
 
 // ICONS CONFIG
@@ -15,16 +15,26 @@ import { headers } from 'next/headers';
 import { protocol, vercelURL } from 'src/helpers/env';
 import { fullName } from 'src/helpers/utils';
 import { twMerge } from 'tailwind-merge';
-import { ThemeSetting } from '../../edit-me/types/Config';
+// import { ThemeSetting } from '../../edit-me/types/Config';
 import './globals.css';
+// import { getTheme } from 'src/helpers/themeServer';
+
+import dynamic from 'next/dynamic'
+const Providers = dynamic(() => import('./providers'), { ssr: false })
 
 const accentColor = resumeConfig.accentColor;
 
-const albert = Albert_Sans({
+const inter = Karla({
   display: 'swap',
   subsets: ['latin'],
-  variable: '--font-albert',
+  variable: '--font-inter',
 });
+
+const lora = Lora({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-lora',
+})
 
 const jetBrainsMono = JetBrains_Mono({
   display: 'swap',
@@ -35,9 +45,9 @@ const jetBrainsMono = JetBrains_Mono({
 export const generateMetadata = async (): Promise<Metadata> => {
   const host = headers().get('host');
   const baseURL = `${protocol}://${host || vercelURL}`;
-  const siteName = `${fullName} Professional Résumé`;
-  const title = `Résumé | ${fullName} | Somewhere`;
-  const description = `Professional résumé for ${fullName}.`;
+  const siteName = `${fullName} Resumé`;
+  const title = `Resumé | ${fullName} | Somewhere`;
+  const description = `Resumé for ${fullName}.`;
 
   return {
     metadataBase: new URL(baseURL),
@@ -71,20 +81,26 @@ export const viewport: Viewport = {
   // @ts-ignore
   themeColor: colors[accentColor][`${accentColor}9`],
   width: 'device-width',
+  // colorScheme: resumeConfig.appTheme === ThemeSetting.Dark ? 'dark' : 'light',
 };
 
 const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
+  // const theme = await getTheme()
+  // console.log('theme issss', theme)
   return (
     <html
       lang="en"
       className={twMerge(
-        albert.variable,
+        inter.variable,
+        lora.variable,
         jetBrainsMono.variable,
-        resumeConfig.appTheme === ThemeSetting.Dark && 'dark',
       )}
-    >
+      suppressHydrationWarning
+    > 
       <body className="bg-neutral-1 text-neutral-12 selection:bg-accent-11 selection:text-neutral-1">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

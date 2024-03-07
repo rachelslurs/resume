@@ -1,20 +1,17 @@
 import React from 'react';
 import { Heading, HeadingProps } from '../Heading/Heading';
 import DynamicIcon from 'src/helpers/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-
 interface SectionHeadingProps {
   icon?: string | undefined;
   level?: HeadingProps['level'];
+  font?: HeadingProps['font'];
   text: string;
 }
 
 export const SectionHeading: React.FC<SectionHeadingProps> = (props) => {
-  const { icon, level = 3, text } = props;
-console.log('icon!', icon)
+  const { icon, level = 3, text, font = 'mono' } = props;
   return (
-    <Heading level={level}>
+    <Heading level={level} font={font}>
       <div className="flex items-center gap-2">
         {icon && (
           <span className="fa-layers fa-fw hidden md:flex">

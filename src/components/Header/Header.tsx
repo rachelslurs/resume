@@ -15,8 +15,8 @@ export const Header: React.FC<HeaderProps> = ({ secret }) => {
       <div className="container">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
           <div className="flex-1 space-y-2">
-            <Heading level={1}>{fullName}</Heading>
-            <Heading color="neutralSubtle" className="text-balance" level={2}>
+            <Heading level={1} font='mono'>{fullName}</Heading>
+            <Heading color="neutralSubtle" font='mono' className="text-balance" level={6}>
               {personal.title}
             </Heading>
           </div>

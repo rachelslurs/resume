@@ -13,6 +13,7 @@ const Professional: React.FC = () => {
           <SectionHeading
             level={2}
             text="Experience"
+            font='sans'
           />
         </div>
 

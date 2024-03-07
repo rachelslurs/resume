@@ -1,6 +1,6 @@
 ---
 title: Senior Staff Engineer
-organization: Hype
+organization: Hype (formerly Pico)
 startDate: '2017'
 endDate: '2023'
 previousTitles:

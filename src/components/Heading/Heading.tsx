@@ -18,9 +18,19 @@ const headingVariants = cva('font-bold', {
       5: 'text-base md:text-lg',
       6: 'text-sm md:text-base',
     },
+    font: {
+      sans: 'font-sans',
+      serif: 'font-serif',
+      mono: 'font-mono',
+    },
+    style: {
+      normal: 'not-italic',
+      italic: 'italic',
+    },
   },
   defaultVariants: {
     color: 'neutral',
+    font: 'sans',
   },
 });
 
@@ -38,9 +48,11 @@ export function Heading({
   color,
   level,
   size,
+  font,
+  style,
 }: PropsWithChildren<HeadingProps>) {
   const classes = twMerge(
-    headingVariants({ color, size: size || level }),
+    headingVariants({ color, size: size || level, font, style}),
     className,
   );
 

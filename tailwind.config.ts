@@ -28,7 +28,8 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: resumeConfig.appTheme === ThemeSetting.System ? 'media' : 'class',
+  // darkMode: resumeConfig.appTheme === ThemeSetting.System ? 'media' : 'class',
+  darkMode: 'selector',
   plugins: [
     colors.plugin,
     plugin(function ({ addVariant }) {
@@ -56,7 +57,8 @@ export default {
       },
       fontFamily: {
         mono: ['var(--font-jetbrains-mono)'],
-        sans: ['var(--font-albert)'],
+        sans: ['var(--font-inter)'],
+        serif: ['var(--font-lora)'],
       },
     },
   },
