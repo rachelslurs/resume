@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 // import { Switch } from '../switch'
 import { Switch } from '@headlessui/react'
 import { useTheme } from 'next-themes'
-import { setCookie } from 'cookies-next'
+import { setThemeOnServer } from 'src/app/actions.server'
+import { getTheme } from 'src/app/actions.client'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -12,12 +13,13 @@ function classNames(...classes: string[]) {
   
 const ModeToggle = () => {
     const [mounted, setMounted] = useState(false)
-
+    // const initialTheme = getTheme()
     const { resolvedTheme, setTheme } = useTheme()
     console.log('resolvedtheme', resolvedTheme)
 
     // useEffect only runs on the client, so now we can safely show the UI
     useEffect(() => {
+        // setTheme(initialTheme)
         setMounted(true)
     }, [])
 
@@ -30,7 +32,7 @@ const ModeToggle = () => {
                 checked={resolvedTheme === 'dark'}
                 onChange={() => {
                     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-                    setCookie('theme', resolvedTheme === 'dark' ? 'light' : 'dark')
+                    setThemeOnServer(resolvedTheme === 'dark' ? 'light' : 'dark')
                 }}
                 color={resolvedTheme === 'dark' ? 'dark' : 'white'}
                 className={classNames(

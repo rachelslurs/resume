@@ -15,12 +15,13 @@ import { headers } from 'next/headers';
 import { protocol, vercelURL } from 'src/helpers/env';
 import { fullName } from 'src/helpers/utils';
 import { twMerge } from 'tailwind-merge';
-// import { ThemeSetting } from '../../edit-me/types/Config';
 import './globals.css';
 // import { getTheme } from 'src/helpers/themeServer';
 
 import dynamic from 'next/dynamic'
-const Providers = dynamic(() => import('./providers'), { ssr: false })
+import { getTheme } from './actions.client';
+import Providers from './providers';
+// const Providers = dynamic(() => import('./providers'), { ssr: false })
 
 const accentColor = resumeConfig.accentColor;
 
@@ -85,8 +86,8 @@ export const viewport: Viewport = {
 };
 
 const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
-  // const theme = await getTheme()
-  // console.log('theme issss', theme)
+  const theme = getTheme()
+  console.log('theme issss', theme)
   return (
     <html
       lang="en"
