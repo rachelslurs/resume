@@ -8,6 +8,6 @@ export default function App({ Component, pageProps }: AppProps) {
   )
 }
 
-App.getInitialProps = ({ req, res }) => ({
+App.getInitialProps = ({ req, res }: { req: any, res: any }) => ({
   colorScheme: getCookie('theme', { req, res })
 })

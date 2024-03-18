@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { contrastColor } from '../helpers/colorContrast';
-import { getAccentColor } from '../helpers/colors';
+import { getColor } from './actions.client';
 
 export const size = {
   width: 32,
@@ -14,7 +14,7 @@ export default function icon() {
       <div
         tw="rounded-full text-xl w-full h-full flex items-center justify-center"
         style={{
-          backgroundColor: getAccentColor(9),
+          backgroundColor: getColor(),
         }}
       >
         <svg

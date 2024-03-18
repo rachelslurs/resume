@@ -2,7 +2,6 @@ import { Metadata, Viewport } from 'next';
 import { Karla, Lora, JetBrains_Mono } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import * as colors from '@radix-ui/colors';
-import resumeConfig from '../../edit-me/config/resumeConfig';
 
 // ICONS CONFIG
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -16,14 +15,19 @@ import { protocol, vercelURL } from 'src/helpers/env';
 import { fullName } from 'src/helpers/utils';
 import { twMerge } from 'tailwind-merge';
 import './globals.css';
-// import { getTheme } from 'src/helpers/themeServer';
+import '@radix-ui/themes/styles.css';
+// has to be after @radi-ui/themes styles
+import './theme-config.css';
 
-import dynamic from 'next/dynamic'
-import { getTheme } from './actions.client';
+// import dynamic from 'next/dynamic'
+// import { getTheme } from './actions.client';
 import Providers from './providers';
+import { getColor, getTheme } from './actions.client';
+import { ColorSchemeEnum } from 'next/dist/lib/metadata/types/metadata-types';
 // const Providers = dynamic(() => import('./providers'), { ssr: false })
 
-const accentColor = resumeConfig.accentColor;
+const accentColor = getColor()
+const theme = getTheme()
 
 const inter = Karla({
   display: 'swap',
@@ -82,12 +86,10 @@ export const viewport: Viewport = {
   // @ts-ignore
   themeColor: colors[accentColor][`${accentColor}9`],
   width: 'device-width',
-  // colorScheme: resumeConfig.appTheme === ThemeSetting.Dark ? 'dark' : 'light',
+  colorScheme: theme as ColorSchemeEnum,
 };
 
 const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
-  const theme = getTheme()
-  console.log('theme issss', theme)
   return (
     <html
       lang="en"
