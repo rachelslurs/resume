@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { Heading } from '../../../components/Heading/Heading';
+import { Heading } from '@radix-ui/themes';
 
 export default function Error({ error }: { error: Error }) {
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Error({ error }: { error: Error }) {
   return (
     <div className="container mt-12 text-center">
       <div className="rounded-xl bg-neutral-3 py-12">
-        <Heading color="danger" level={2}>
+        <Heading size={'2'}>
           {error.message}
         </Heading>
 

@@ -1,9 +1,10 @@
 import * as colors from '@radix-ui/colors';
 import { Theme } from '../../edit-me/types/Config';
 import resumeConfig from '../../edit-me/config/resumeConfig';
+import { getColor } from 'src/app/actions.client';
 
 const defaultTheme = resumeConfig.imageTheme;
-const configAccent = resumeConfig.accentColor;
+const configAccent = getColor();
 const configNeutral = resumeConfig.neutralColor;
 
 /**
@@ -12,10 +13,9 @@ const configNeutral = resumeConfig.neutralColor;
  * @returns The accent color string
  */
 export const getAccentColor = (shade: number, theme = defaultTheme) => {
-  const accent =
-    // @ts-ignore
-    colors[theme === Theme.Dark ? `${configAccent}Dark` : configAccent];
-  return accent[`${configAccent}${shade}`];
+  console.log(configAccent, 'configAccent')
+  const accent = theme === Theme.Dark ? `${configAccent}Dark` : configAccent;
+  return accent[`${configAccent}${shade.toString()}` as keyof typeof accent];
 };
 
 /**
