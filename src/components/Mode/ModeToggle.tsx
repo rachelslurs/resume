@@ -1,25 +1,25 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 
 // import { Switch } from '../switch'
 import { Switch } from '@headlessui/react'
-import { useTheme } from 'next-themes'
-import { setThemeOnServer } from 'src/app/actions.server'
-import { getTheme } from 'src/app/actions.client'
+// import { useTheme } from 'next-themes'
+import { setTheme } from 'src/app/actions.server'
+// import { getTheme } from 'src/app/actions.client'
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
   }
   
-const ModeToggle = () => {
+const ModeToggle = ({ theme }: { theme: string }) => {
     const [mounted, setMounted] = useState(false)
-    // const initialTheme = getTheme()
-    const { resolvedTheme, setTheme } = useTheme()
-    console.log('resolvedtheme', resolvedTheme)
+    const [isPending, startTransition] = useTransition();
+    // const { setTheme } = useTheme()
+    console.log('theme is currently in mode toggle', theme)
+    console.log('isPending', isPending)
 
-    // useEffect only runs on the client, so now we can safely show the UI
+    // // useEffect only runs on the client, so now we can safely show the UI
     useEffect(() => {
-        // setTheme(initialTheme)
         setMounted(true)
     }, [])
 
@@ -29,27 +29,34 @@ const ModeToggle = () => {
     
     return (
             <Switch
-                checked={resolvedTheme === 'dark'}
-                onChange={() => {
-                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-                    setThemeOnServer(resolvedTheme === 'dark' ? 'light' : 'dark')
+                checked={theme === 'dark'}
+                onChange={async () => {
+                    console.log('change from', theme, 'to', theme === 'dark' ? 'light' : 'dark')
+                    // return await setTheme(theme === 'dark' ? 'light' : 'dark')
+
+                    // startTransition(async () => {
+                    //     console.log('change from', theme, 'to', theme === 'dark' ? 'light' : 'dark')
+                        const newTheme = await setTheme(theme === 'dark' ? 'light' : 'dark')
+                        // setTheme(theme === 'dark' ? 'light' : 'dark')
+                        return newTheme
+                    // })
                 }}
-                color={resolvedTheme === 'dark' ? 'dark' : 'white'}
+                color={theme === 'dark' ? 'dark' : 'white'}
                 className={classNames(
-                    resolvedTheme === 'dark' ? 'bg-gray-600' : 'bg-gray-200',
+                    theme === 'dark' ? 'bg-gray-600' : 'bg-gray-200',
                     'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2'
                   )}
             >
                 <span className="sr-only">Use setting</span>
                 <span
                     className={classNames(
-                    resolvedTheme === 'dark' ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray-100',
+                    theme === 'dark' ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray-100',
                     'pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
                     )}
                 >
                     <span
                         className={classNames(
-                            resolvedTheme === 'dark' ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in',
+                            theme === 'dark' ? 'opacity-0 duration-100 ease-out' : 'opacity-100 duration-200 ease-in',
                             'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'
                         )}
                         aria-hidden="true"
@@ -60,7 +67,7 @@ const ModeToggle = () => {
                     </span>
                     <span
                         className={classNames(
-                            resolvedTheme === 'dark' ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out',
+                            theme === 'dark' ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out',
                             'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'
                         )}
                         aria-hidden="true"

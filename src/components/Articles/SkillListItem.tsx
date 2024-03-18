@@ -32,7 +32,7 @@ const SkillListItem: React.FC<SkillItem> = (props) => {
                 </div>
             </Heading>
             {skillItem.body?.html &&
-                <Prose className="text-neutral-11" html={skillItem.body.html} />
+                <Prose className="var(--accent-4)" html={skillItem.body.html} />
             }
         </div>
     );

@@ -14,9 +14,10 @@ export const Footer: React.FC = () => {
             <div className="grid grid-flow-col gap-2">
               {links.map((link) => (
                 <ButtonLink
-                  className="h-12 w-12 rounded-full p-0"
                   href={link.href}
                   key={link.title}
+                  radius='full'
+                  className='!h-12 !w-12 !p0'
                 >
                   <span className="sr-only">
                     {personal.givenName} on {link.title}

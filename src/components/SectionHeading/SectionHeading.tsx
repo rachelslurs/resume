@@ -1,18 +1,23 @@
 import React from 'react';
-import { Heading, HeadingProps } from '../Heading/Heading';
+
 import DynamicIcon from 'src/helpers/icons';
+import { Flex, Heading, flexPropDefs } from '@radix-ui/themes';
+import { HeadingProps } from '@radix-ui/themes/dist/cjs/components/heading';
+import { FlexProps } from '@radix-ui/themes/dist/cjs/components/flex';
 interface SectionHeadingProps {
+  className?: string;
   icon?: string | undefined;
-  level?: HeadingProps['level'];
-  font?: HeadingProps['font'];
+  size?: HeadingProps['size'] | undefined;
+  font?: string | undefined;
   text: string;
+  justify?: FlexProps['justify'] | undefined;
 }
 
 export const SectionHeading: React.FC<SectionHeadingProps> = (props) => {
-  const { icon, level = 3, text, font = 'mono' } = props;
+  const { icon, size = '7', text, font = 'mono', className, justify = 'start' } = props;
   return (
-    <Heading level={level} font={font}>
-      <div className="flex items-center gap-2">
+    <Heading size={size} className={`font-${font} ${className}`}>
+      <Flex gap='2' justify={justify}>
         {icon && (
           <span className="fa-layers fa-fw hidden md:flex">
             <DynamicIcon iconSelected='faCircle' className='text-neutral-12' />
@@ -20,7 +25,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = (props) => {
           </span>
         )}
         <div>{text}</div>
-      </div>
+      </Flex>
     </Heading>
   );
 };

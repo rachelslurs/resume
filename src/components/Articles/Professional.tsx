@@ -3,25 +3,23 @@ import React from 'react';
 import { sortedProfessionalExperiences } from 'src/helpers/utils';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import ProfessionalItem from './ProfessionalItem';
+import { Card, Flex } from '@radix-ui/themes';
 
 const Professional: React.FC = () => {
   // console.log('sortedProfessionalExperiences', sortedProfessionalExperiences)
   return (
-    <article className="rounded-xl bg-neutral-3 py-12">
-      <div className="container">
-        <div className="flex justify-center text-center">
+    <Card>
+      <Flex gap={'6'} direction="column" justify={'center'}>
           <SectionHeading
-            level={2}
+            size={'7'}
             text="Experience"
-            font='sans'
+            justify={'center'}
           />
-        </div>
-
         {sortedProfessionalExperiences.map((professional) => (
           <ProfessionalItem key={professional._id} {...professional} />
         ))}
-      </div>
-    </article>
+      </Flex>
+    </Card>
   );
 };
 

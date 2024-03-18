@@ -22,7 +22,6 @@ import {
   sortedProfessionalExperiences,
 } from '../../helpers/utils';
 import { BuildingColumns } from './Icons/BuildingColumns';
-import { Calendar } from './Icons/Calendar';
 import { CircleBriefcase } from './Icons/CircleBriefcase';
 import { CircleCheck } from './Icons/CircleCheck';
 import { CircleGraduationCap } from './Icons/CircleGraduationCap';

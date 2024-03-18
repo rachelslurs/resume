@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+import { Text } from '@radix-ui/themes'
 
 interface ProseProps {
   className?: string;
@@ -7,7 +8,7 @@ interface ProseProps {
 
 const Prose: React.FC<ProseProps> = ({ className, html }) => {
   return (
-    <div
+    <Text
       className={twMerge(
         'prose mt-2 text-base text-neutral-12 [&>p]:mb-2',
         className,
