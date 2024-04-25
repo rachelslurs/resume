@@ -25,7 +25,7 @@ const SkillListItem: React.FC<SkillItem> = (props) => {
   const { skillItem } = props
   return (
     <div key={skillItem._id}>
-      <Heading level={4} className="mt-4 font-extrabold tracking-tight">
+      <Heading level={4} className="font-extrabold tracking-tight">
         <div className="flex items-center gap-2">
           {skillItem.icon && <DynamicIcon iconSelected={skillItem.icon} />}
           {skillItem.title}

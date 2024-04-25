@@ -1,6 +1,5 @@
 import { allSkills } from '@content'
 import React from 'react'
-import { SectionHeading } from '../SectionHeading/SectionHeading'
 import SkillListItem from './SkillListItem'
 
 type Skill = {
@@ -15,7 +14,7 @@ type Skill = {
 const Skills: React.FC = () => {
   return (
     <article>
-      <div className="mt-2 grid grid-flow-row gap-6 lg:grid-flow-col">
+      <div className="grid grid-flow-row gap-6 lg:grid-flow-col">
         {allSkills
           .sort((a, b) => a.order - b.order)
           .map((skill: Skill, skillIndex) => {

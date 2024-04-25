@@ -7,7 +7,7 @@ const AboutMe: React.FC = () => {
     <>
       <Prose
         html={personal.body.html}
-        className="mt-4 max-w-[36rem] text-lg font-light xl:max-w-[43.5rem]"
+        className="mt-8 max-w-[36rem] text-lg font-light xl:max-w-[44rem]"
       />
     </>
   )

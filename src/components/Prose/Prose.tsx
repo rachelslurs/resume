@@ -8,10 +8,7 @@ interface ProseProps {
 const Prose: React.FC<ProseProps> = ({ className, html }) => {
   return (
     <div
-      className={twMerge(
-        'prose mt-2 text-base text-neutral-12 [&>p]:mb-2',
-        className,
-      )}
+      className={twMerge('prose mt-2 text-base text-neutral-12', className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
