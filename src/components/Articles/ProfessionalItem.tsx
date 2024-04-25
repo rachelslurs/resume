@@ -12,7 +12,7 @@ const ProfessionalItem: React.FC<ProfessionalExperience> = (props) => {
     : []
   return (
     <article className="border-t-2 border-neutral-6 py-6 first-of-type:border-none last-of-type:pb-0">
-      <Heading className="tracking-tight" level={3}>
+      <Heading level={4}>
         <span className="rounded-md bg-neutral-12 px-2 text-neutral-1">
           {title}
         </span>
@@ -20,13 +20,13 @@ const ProfessionalItem: React.FC<ProfessionalExperience> = (props) => {
       </Heading>
 
       {previousTitlesSorted.length === 0 && (
-        <div className="tracking-wide">
+        <div className="font-bold tracking-tight text-neutral-12">
           {startDate}–{!endDate ? 'Current' : endDate}
         </div>
       )}
       {previousTitlesSorted?.map((prevTitle: PreviousTitle, idx) => (
         <div className="mt-1" key={idx}>
-          <p className="tracking-wide">
+          <p className="font-bold tracking-tight text-neutral-12">
             {prevTitle.title} {prevTitle.startDate}–{prevTitle.endDate}
           </p>
         </div>

@@ -25,15 +25,13 @@ const SkillListItem: React.FC<SkillItem> = (props) => {
   const { skillItem } = props
   return (
     <div key={skillItem._id}>
-      <Heading level={4} className="font-extrabold tracking-tight">
+      <Heading level={4} className="mb-4 font-extrabold tracking-tight">
         <div className="flex items-center gap-2">
           {skillItem.icon && <DynamicIcon iconSelected={skillItem.icon} />}
           {skillItem.title}
         </div>
       </Heading>
-      {skillItem.body?.html && (
-        <Prose className="mt-4 text-neutral-11" html={skillItem.body.html} />
-      )}
+      {skillItem.body?.html && <Prose html={skillItem.body.html} />}
     </div>
   )
 }

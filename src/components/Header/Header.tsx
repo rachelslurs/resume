@@ -21,15 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ secret }) => {
             >
               {fullName}
             </Heading>
-            {personal.title && (
-              <Heading
-                color="neutralSubtle"
-                className="text-balance font-normal"
-                level={3}
-              >
-                {personal.title}
-              </Heading>
-            )}
+            {personal.title && <Heading level={4}>{personal.title}</Heading>}
           </div>
         </div>
       </div>

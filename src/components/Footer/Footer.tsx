@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
           </div>
         )}
 
-        <div className="mt-6">
+        <div className="mt-6 font-extrabold tracking-tight">
           Copyright ©{new Date().getFullYear()} {fullName}
         </div>
 
