@@ -13,16 +13,19 @@ const AchievementItem: React.FC<Achievement> = ({
 }) => {
   return (
     <article className="border-t-2 border-neutral-6 py-6 first-of-type:border-none last-of-type:pb-0">
-      <Heading className="text-balance tracking-tight" level={3}>
+      <Heading
+        className="text-lg font-extrabold tracking-tight text-neutral-12 md:text-xl"
+        level={3}
+      >
+        {icon && <DynamicIcon className="mr-2 text-lg" iconSelected={icon} />}
         {achievement}
       </Heading>
 
-      <div className="mt-1 font-medium">
-        {icon && <DynamicIcon className="mr-2" iconSelected={icon} />}
+      <div className="mt-1 font-bold tracking-tight">
         {organization}, {completionYear}
       </div>
 
-      <Prose html={body.html} />
+      <Prose html={body.html} className="text-md" />
     </article>
   )
 }

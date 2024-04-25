@@ -1,8 +1,8 @@
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge'
 
 interface ProseProps {
-  className?: string;
-  html: string;
+  className?: string
+  html: string
 }
 
 const Prose: React.FC<ProseProps> = ({ className, html }) => {
@@ -14,7 +14,7 @@ const Prose: React.FC<ProseProps> = ({ className, html }) => {
       )}
       dangerouslySetInnerHTML={{ __html: html }}
     />
-  );
-};
+  )
+}
 
-export default Prose;
+export default Prose
