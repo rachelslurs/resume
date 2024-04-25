@@ -1,8 +1,8 @@
 ---
 givenName: Rachel
 familyName: Cantor
-title: Architect of software, watcher of bears
+title: Senior Full Stack UI Engineer
 location: New York, NY
 ---
 
-A senior full stack engineer with 12+ years experience with a frontend focus, passionate about fostering collaboration, who is eager to explore a new opportunity to apply technical leadership and expertise in an environment that embraces innovation, while delivering measurable value to users.
+A senior engineer with 12+ years experience, with a background spanning the full stack of web development; passionate about delivering exceptional UI/UX; eager to apply technical expertise while delivering measurable value to users.

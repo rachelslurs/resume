@@ -1,17 +1,17 @@
-import resumeConfig from 'edit-me/config/resumeConfig';
-import { ImageResponse } from 'next/og';
-import { getAccentColor, getNeutralColor } from 'src/helpers/colors';
-import { fullName } from 'src/helpers/utils';
+import resumeConfig from 'edit-me/config/resumeConfig'
+import { ImageResponse } from 'next/og'
+import { getAccentColor, getNeutralColor } from 'src/helpers/colors'
+import { fullName } from 'src/helpers/utils'
 
-const theme = resumeConfig.imageTheme;
+const theme = resumeConfig.imageTheme
 
-export const alt = 'Professional Résumé';
-export const contentType = 'image/png';
-export const runtime = 'edge';
+export const alt = 'Professional Resume'
+export const contentType = 'image/png'
+export const runtime = 'edge'
 export const size = {
   width: 1200,
   height: 630,
-};
+}
 
 export default async function og() {
   return new ImageResponse(
@@ -45,7 +45,7 @@ export default async function og() {
             }}
             tw="text-6xl"
           >
-            Professional Résumé
+            Professional Resume
           </div>
           <div
             style={{ color: getAccentColor(12, theme) }}
@@ -56,5 +56,5 @@ export default async function og() {
         </div>
       </div>
     ),
-  );
+  )
 }

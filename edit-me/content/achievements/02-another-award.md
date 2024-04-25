@@ -1,6 +1,6 @@
 ---
-achievement: IxDA Interaction Awards
-organization: Best in Category, Connecting
+achievement: Core 77 Design Awards
+organization: Notable Interaction Award
 completionYear: 2016
 icon: faTrophy
 ---

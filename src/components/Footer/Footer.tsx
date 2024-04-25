@@ -1,9 +1,9 @@
-import { personal } from '@content';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { links } from 'edit-me/config/links';
-import React from 'react';
-import { fullName } from 'src/helpers/utils';
-import ButtonLink from '../Button/ButtonLink';
+import { personal } from '@content'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { links } from 'edit-me/config/links'
+import React from 'react'
+import { fullName } from 'src/helpers/utils'
+import ButtonLink from '../Button/ButtonLink'
 
 export const Footer: React.FC = () => {
   return (
@@ -28,12 +28,12 @@ export const Footer: React.FC = () => {
           </div>
         )}
 
-        <div className="mt-6">
+        <div className="mt-6 font-extrabold tracking-tight">
           Copyright ©{new Date().getFullYear()} {fullName}
         </div>
 
-        <div className="mt-1 text-sm">
-          This résumé was generated with{' '}
+        {/* <div className="mt-1 text-sm">
+          This resumé was generated with{' '}
           <a className="link" href="https://nextjs.org/">
             Next.js
           </a>{' '}
@@ -49,8 +49,8 @@ export const Footer: React.FC = () => {
             nextjs-resume-generator
           </a>
           !
-        </div>
+        </div> */}
       </div>
     </footer>
-  );
-};
+  )
+}

@@ -4,14 +4,14 @@ import {
   ResumeConfig,
   Theme,
   ThemeSetting,
-} from '../types/Config';
+} from '../types/Config'
 
 const config: ResumeConfig = {
-  accentColor: AccentColors.Mint,
-  neutralColor: NeutralColors.Sand,
+  accentColor: AccentColors.Orange,
+  neutralColor: NeutralColors.Gray,
   appTheme: ThemeSetting.System,
   imageTheme: Theme.Light,
   pdfTheme: Theme.Light,
-};
+}
 
-export default config;
+export default config
