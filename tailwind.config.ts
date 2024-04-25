@@ -1,12 +1,12 @@
-import * as radixColors from '@radix-ui/colors';
-import type { Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin';
-import resumeConfig from './edit-me/config/resumeConfig';
-import { ThemeSetting } from './edit-me/types/Config';
-import { contrastColor } from './src/helpers/colorContrast';
+import * as radixColors from '@radix-ui/colors'
+import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
+import resumeConfig from './edit-me/config/resumeConfig'
+import { ThemeSetting } from './edit-me/types/Config'
+import { contrastColor } from './src/helpers/colorContrast'
 
 // @ts-ignore
-import { createPlugin } from 'windy-radix-palette';
+import { createPlugin } from 'windy-radix-palette'
 
 const colors = createPlugin({
   colors: {
@@ -21,7 +21,7 @@ const colors = createPlugin({
     red: radixColors.red,
     redDark: radixColors.redDark,
   },
-});
+})
 
 export default {
   content: [
@@ -32,7 +32,7 @@ export default {
   plugins: [
     colors.plugin,
     plugin(function ({ addVariant }) {
-      addVariant('hocus', ['&:hover', '&:focus']);
+      addVariant('hocus', ['&:hover', '&:focus'])
     }),
   ],
   theme: {
@@ -56,8 +56,8 @@ export default {
       },
       fontFamily: {
         mono: ['var(--font-jetbrains-mono)'],
-        sans: ['var(--font-albert)'],
+        sans: ['var(--font-inter)'],
       },
     },
   },
-} satisfies Config;
+} satisfies Config

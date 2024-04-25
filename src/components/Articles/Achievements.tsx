@@ -1,13 +1,13 @@
-import React from 'react';
-import { sortedAchievements } from 'src/helpers/utils';
-import { SectionHeading } from '../SectionHeading/SectionHeading';
-import AchievementItem from './AchievementItem';
+import React from 'react'
+import { sortedAchievements } from 'src/helpers/utils'
+import { SectionHeading } from '../SectionHeading/SectionHeading'
+import AchievementItem from './AchievementItem'
 
 const Achievements: React.FC = () => {
   return (
     <article className="rounded-xl bg-neutral-3 py-12">
       <div className="container">
-        <div className="flex justify-center text-center">
+        <div className="flex justify-center text-center tracking-tight">
           <SectionHeading level={2} text="Achievements" />
         </div>
 
@@ -16,7 +16,7 @@ const Achievements: React.FC = () => {
         ))}
       </div>
     </article>
-  );
-};
+  )
+}
 
-export default Achievements;
+export default Achievements

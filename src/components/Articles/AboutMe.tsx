@@ -1,15 +1,16 @@
-import { personal } from '@content';
-import React from 'react';
-import Prose from '../Prose/Prose';
-import { SectionHeading } from '../SectionHeading/SectionHeading';
+import { personal } from '@content'
+import React from 'react'
+import Prose from '../Prose/Prose'
 
 const AboutMe: React.FC = () => {
   return (
-    <article>
-      <SectionHeading level={3} text="About Me" />
-      <Prose html={personal.body.html} />
-    </article>
-  );
-};
+    <>
+      <Prose
+        html={personal.body.html}
+        className="mt-4 max-w-[36rem] text-lg font-light xl:max-w-[43.5rem]"
+      />
+    </>
+  )
+}
 
-export default AboutMe;
+export default AboutMe

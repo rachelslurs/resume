@@ -1,43 +1,43 @@
-import * as colors from '@radix-ui/colors';
-import { Metadata, Viewport } from 'next';
-import { Albert_Sans, JetBrains_Mono } from 'next/font/google';
-import { PropsWithChildren } from 'react';
-import resumeConfig from '../../edit-me/config/resumeConfig';
+import * as colors from '@radix-ui/colors'
+import { Metadata, Viewport } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
+import { PropsWithChildren } from 'react'
+import resumeConfig from '../../edit-me/config/resumeConfig'
 
 // ICONS CONFIG
-import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
 // STYLES
-import { personal } from '@content';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { headers } from 'next/headers';
-import { protocol, vercelURL } from 'src/helpers/env';
-import { fullName } from 'src/helpers/utils';
-import { twMerge } from 'tailwind-merge';
-import { ThemeSetting } from '../../edit-me/types/Config';
-import './globals.css';
+import { personal } from '@content'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { headers } from 'next/headers'
+import { protocol, vercelURL } from 'src/helpers/env'
+import { fullName } from 'src/helpers/utils'
+import { twMerge } from 'tailwind-merge'
+import { ThemeSetting } from '../../edit-me/types/Config'
+import './globals.css'
 
-const accentColor = resumeConfig.accentColor;
+const accentColor = resumeConfig.accentColor
 
-const albert = Albert_Sans({
+const inter = Inter({
   display: 'swap',
   subsets: ['latin'],
-  variable: '--font-albert',
-});
+  variable: '--font-inter',
+})
 
 const jetBrainsMono = JetBrains_Mono({
   display: 'swap',
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
-});
+})
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const host = headers().get('host');
-  const baseURL = `${protocol}://${host || vercelURL}`;
-  const siteName = `${fullName} Professional Résumé`;
-  const title = `Résumé | ${fullName} | Somewhere`;
-  const description = `Professional résumé for ${fullName}.`;
+  const host = headers().get('host')
+  const baseURL = `${protocol}://${host || vercelURL}`
+  const siteName = `${fullName} Resume`
+  const title = `${fullName} Resume | New York, NY`
+  const description = `Professional resume for ${fullName}.`
 
   return {
     metadataBase: new URL(baseURL),
@@ -46,7 +46,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     creator: fullName,
     description,
     generator: 'Next.js',
-    keywords: ['resume', fullName, 'next.js', 'pdf'],
+    keywords: ['resume', fullName, 'next.js', 'typescript', 'tailwindcss'],
     openGraph: {
       type: 'profile',
       firstName: personal.givenName,
@@ -63,22 +63,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
       description,
       title,
     },
-  };
-};
+  }
+}
 
 export const viewport: Viewport = {
   initialScale: 1,
   // @ts-ignore
   themeColor: colors[accentColor][`${accentColor}9`],
   width: 'device-width',
-};
+}
 
 const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
   return (
     <html
       lang="en"
       className={twMerge(
-        albert.variable,
+        inter.variable,
         jetBrainsMono.variable,
         resumeConfig.appTheme === ThemeSetting.Dark && 'dark',
       )}
@@ -87,7 +87,7 @@ const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
         {children}
       </body>
     </html>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
