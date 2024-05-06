@@ -1,4 +1,5 @@
 import * as colors from '@radix-ui/colors'
+import Script from 'next/script'
 import { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { PropsWithChildren } from 'react'
@@ -83,6 +84,19 @@ const RootLayout: React.FC<PropsWithChildren> = async ({ children }) => {
         resumeConfig.appTheme === ThemeSetting.Dark && 'dark',
       )}
     >
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZCHTJJSW4H"
+        strategy="afterInteractive"
+      />
+      <Script id="google" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-ZCHTJJSW4H');
+        `}
+      </Script>
       <body className="bg-neutral-1 text-neutral-12 selection:bg-accent-11 selection:text-neutral-1">
         {children}
       </body>
