@@ -1,4 +1,8 @@
-import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from 'contentlayer/source-files'
 
 export const Personal = defineDocumentType(() => ({
   name: 'Personal',
@@ -18,7 +22,7 @@ export const Personal = defineDocumentType(() => ({
     title: {
       type: 'string',
       description: 'Your current job title or a short description of your goal',
-      required: true,
+      required: false,
     },
     location: {
       type: 'string',
@@ -32,7 +36,7 @@ export const Personal = defineDocumentType(() => ({
       required: false,
     },
   },
-}));
+}))
 
 export const Skill = defineDocumentType(() => ({
   name: 'Skill',
@@ -52,9 +56,9 @@ export const Skill = defineDocumentType(() => ({
       type: 'number',
       description: 'The order of the skill in the list',
       required: true,
-    }
+    },
   },
-}));
+}))
 
 export const PreviousTitle = defineNestedType(() => ({
   name: 'PreviousTitle',
@@ -75,7 +79,7 @@ export const PreviousTitle = defineNestedType(() => ({
       required: true,
     },
   },
-}));
+}))
 
 export const ProfessionalExperience = defineDocumentType(() => ({
   name: 'ProfessionalExperience',
@@ -106,9 +110,9 @@ export const ProfessionalExperience = defineDocumentType(() => ({
       type: 'list',
       of: PreviousTitle,
       required: false,
-    }
+    },
   },
-}));
+}))
 
 export const Achievement = defineDocumentType(() => ({
   name: 'Achievement',
@@ -137,7 +141,7 @@ export const Achievement = defineDocumentType(() => ({
       required: false,
     },
   },
-}));
+}))
 
 export const AdditionalInfo = defineDocumentType(() => ({
   name: 'AdditionalInfo',
@@ -150,7 +154,7 @@ export const AdditionalInfo = defineDocumentType(() => ({
       required: true,
     },
   },
-}));
+}))
 
 export const PrivateField = defineDocumentType(() => ({
   name: 'PrivateField',
@@ -162,7 +166,7 @@ export const PrivateField = defineDocumentType(() => ({
       required: true,
     },
   },
-}));
+}))
 
 export default makeSource({
   contentDirPath: 'edit-me/content',
@@ -174,4 +178,4 @@ export default makeSource({
     AdditionalInfo,
     PrivateField,
   ],
-});
+})

@@ -4,4 +4,4 @@ icon: faRulerCombined
 order: 1
 ---
 
-Javascript (Typescript, React), unit and integration tests (Jest), CSS, Sass, ESM/CJS library development, performance optimization, Tailwind, Git, Next.js, Storybook, Wordpress plugin development, GraphQL, web platform APIs like web components, web workers, broadcast channels, beacons, etc.
+Javascript (Typescript, React), unit/integration tests (Jest), component library, package management, performance optimization, accessibility testing, Git, Next.js, Storybook, GraphQL, web platform APIs like web components, web workers, beacons, etc., translating designs from Figma and Sketch to CSS, SASS, Tailwind
