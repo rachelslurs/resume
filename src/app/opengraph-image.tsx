@@ -51,7 +51,7 @@ export default async function og() {
             style={{ color: getAccentColor(12, theme) }}
             tw="mt-12 text-4xl rounded-lg"
           >
-            Available online or as a PDF
+            Available online
           </div>
         </div>
       </div>

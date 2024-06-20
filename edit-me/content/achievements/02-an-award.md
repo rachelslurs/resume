@@ -1,7 +1,7 @@
 ---
 achievement: IxDA Interaction Awards
 organization: Best in Category, Connecting
-completionYear: 2016
+completionYear: '2016'
 icon: faTrophy
 ---
 

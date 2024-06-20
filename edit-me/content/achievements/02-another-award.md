@@ -1,7 +1,7 @@
 ---
 achievement: Core 77 Design Awards
 organization: Notable Interaction Award
-completionYear: 2016
+completionYear: '2016'
 icon: faTrophy
 ---
 

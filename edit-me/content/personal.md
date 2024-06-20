@@ -5,4 +5,4 @@ title:
 location: New York, NY
 ---
 
-A senior engineer with 12+ years experience, with a background spanning the full stack of web development; passionate about delivering exceptional UI/UX and going the extra mile for the end-user.
+A senior engineer with a background spanning the full stack of web development; passionate about delivering exceptional UI/UX.
