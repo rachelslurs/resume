@@ -1,7 +1,7 @@
 ---
 achievement: Section 508 Trusted Tester Certification
 organization: US Department of Homeland Security
-completionYear: 2024
+completionYear: '2024'
 icon: faCertificate
 ---
 
