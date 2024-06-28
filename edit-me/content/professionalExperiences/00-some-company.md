@@ -1,12 +1,9 @@
 ---
-title: Senior Staff Engineer
+title: Staff Engineer
 organization: Hype (formerly Pico)
 startDate: '2017'
 endDate: '2023'
 previousTitles:
-  - title: Staff Engineer
-    startDate: '2022'
-    endDate: '2023'
   - title: Lead Engineer
     startDate: '2019'
     endDate: '2022'
